@@ -1,8 +1,8 @@
-Spring Boot REST Controller — Student API
+# Spring Boot REST Controller — Student API
 
 Using Maven as dependency manager, built with Java 21
 
-Overview
+## Overview
 
 Built a simple Student API and using openAPI to display endpoint
 
