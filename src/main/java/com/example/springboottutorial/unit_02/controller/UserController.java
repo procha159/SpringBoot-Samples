@@ -1,5 +1,6 @@
 package com.example.springboottutorial.unit_02.controller;
 
+import com.example.springboottutorial.unit_02.UserDto.UserDto;
 import com.example.springboottutorial.unit_02.entity.User;
 import com.example.springboottutorial.unit_02.service.UserService;
 import lombok.AllArgsConstructor;
@@ -17,27 +18,27 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User userCreated = userService.createUser(user);
+    public ResponseEntity<UserDto> createUser(@RequestBody UserDto user) {
+        UserDto userCreated = userService.createUser(user);
         return new ResponseEntity<>(userCreated, HttpStatus.CREATED);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id") Long userId) {
-        User user = userService.getUserById(userId);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+    public ResponseEntity<UserDto> getUserById(@PathVariable("id") Long userId) {
+        UserDto userDto = userService.getUserById(userId);
+        return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
     @GetMapping("users")
-    public ResponseEntity<List<User>> getAllUser() {
-        List<User> users = userService.getAllUsers();
+    public ResponseEntity<List<UserDto>> getAllUser() {
+        List<UserDto> users = userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<User> updateUser(@PathVariable("id") Long userId, @RequestBody User user) {
+    public ResponseEntity<UserDto> updateUser(@PathVariable("id") Long userId, @RequestBody UserDto user) {
         user.setId(userId);
-        User userUpdated = userService.updateUser(user);
+        UserDto userUpdated = userService.updateUser(user);
         return new ResponseEntity<>(userUpdated, HttpStatus.OK);
     }
 
